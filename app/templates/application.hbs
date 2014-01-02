@@ -1,0 +1,30 @@
+<h1>Palette</h1>
+
+<form id="search">
+  <label>
+    {{#t}}Search{{/t}}
+    {{input type="text" id="search-field" value=searchTerm}}
+  </label>
+</form>
+
+<div id="category-filter">
+  {{#ic-buttonset value=selectedCategory}}
+    {{ic-button value="all" label="everyone"}}
+    {{#each category in categories}}
+      {{ic-button value=category.id label=category.name}}
+    {{/each}}
+  {{/ic-buttonset}}
+  {{selectedCategory}}
+</div>
+
+<div id="content-filters">
+  {{#each category in content_filters}}
+    <h2>{{category.name}}</h2>
+    <ul>
+      {{#each filter in category.filters}}
+        <li>{{filter.name}}</li>
+      {{/each}}
+    </ul>
+  {{/each}}
+</div>
+
