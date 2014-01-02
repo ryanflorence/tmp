@@ -1,3 +1,66 @@
+#console {
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: rgba(0,0,0,0.85);
+  color: lightgreen;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 1.2;
+  font-family: "Anonymous Pro";
+  margin: 0;
+  padding: 8px;
+}
+
 body {
   font-family: HelveticaNeue, Helvetica, Arial, sans-serif;
+  margin-bottom: 300px;
+}
+
+#header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  border-bottom: 1px solid;
+}
+
+#side-bar {
+  position: absolute;
+  top: 151px;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  border-right: 1px solid;
+  overflow: auto;
+}
+
+#content {
+  position: absolute;
+  top: 151px;
+  left: 201px;
+  bottom: 0;
+  right: 0px;
+  overflow: auto;
+}
+
+
+#learning-objects > li {
+  display: inline-block;
+  width: 300px;
+  height: 200px;
+  vertical-align: top;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid;
+  overflow: hidden;
+}
+
+#learning-objects p {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
