@@ -1,6 +1,7 @@
 <pre id="console">
 searchTerm: {{searchTerm}}
 selectedCategory: {{selectedCategory}}
+learningObjectUrl: {{learningObjectUrl}}
 </pre>
 
 <section id="header">
@@ -12,7 +13,7 @@ selectedCategory: {{selectedCategory}}
   </form>
   <h2>Category Filter</h2>
   <div id="category-filter">
-    {{#ic-buttonset value=selectedCategory}}
+    {{#ic-buttonset value=selectedCategory default=selectedCategory}}
       {{ic-button value="all" label="everyone"}}
       {{#each category in categories}}
         {{ic-button value=category.id label=category.name}}
@@ -38,19 +39,19 @@ selectedCategory: {{selectedCategory}}
 <section id="content">
   <h2>Learning Objects</h2>
   <ul id="learning-objects">
-    {{#each object in learning_objects itemController="learningObject"}}
+    {{#each object in learningObjects itemController="learningObject"}}
       <li>
         <h3>{{object.name}}</h3>
         <i><b>{{object.author}}</b></i> - {{date}}
+        <div class="object-ratings">
+          {{pal-star stars=stars}} - ({{ratings}} ratings)
+        </div>
         <p>{{object.description}}</p>
         <ul>
           {{#each tag in object.tags}}
             <li>{{tag.name}}</li>
           {{/each}}
         </ul>
-        <div class="object-ratings">
-          {{pal-star stars=stars}} - ({{ratings}} ratings)
-        </div>
       </li>
     {{/each}}
   </ul>

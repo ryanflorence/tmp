@@ -32,9 +32,9 @@ var learning_objects = [
 ];
 
 var categories = [
-  { name: 'University of Florence', id: 2 },
-  { name: 'Bracken State', id: 3 },
-  { name: 'My Stuff', id: 4 }
+  { name: 'University of Florence', id: 1 },
+  { name: 'Bracken State', id: 2 },
+  { name: 'My Stuff', id: 3 }
 ];
 
 var content_filters = [
@@ -80,12 +80,9 @@ var content_filters = [
   },
 ];
 
-ajax.defineFixture('/course_selection', {
-  response: {
-    learning_objects: learning_objects,
-    categories: categories,
-    content_filters: content_filters
-  },
+ajax.defineFixture('/categories', {
+  response: categories,
   jqXHR: {},
   textStatus: 'success'
 });
+
