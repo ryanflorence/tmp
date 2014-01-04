@@ -1,13 +1,10 @@
 {
   "name": "palette-client",
   "version": "0.1.0",
-  "bin": {
-    "ember": "./bin/ember"
-  },
   "dependencies": {
     "ic-ajax": "*",
     "ic-styled": "~1.1.4",
-    "ic-buttonset": "~0.1.2"
+    "ic-buttonset": "~0.1.3"
   },
   "peerDependencies": {
     "loom": "~3.x.x",

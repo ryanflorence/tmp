@@ -32,9 +32,9 @@ var learning_objects = [
 ];
 
 var categories = [
-  { name: 'University of Florence', id: 1 },
-  { name: 'Bracken State', id: 2 },
-  { name: 'My Stuff', id: 3 }
+  { name: 'University of Florence', id: '1' },
+  { name: 'Bracken State', id: '2' },
+  { name: 'My Stuff', id: '3' }
 ];
 
 var content_filters = [

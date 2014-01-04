@@ -8,10 +8,9 @@ learningObjectUrl: {{learningObjectUrl}}
   <form id="search">
     <label>
       {{#t}}Search{{/t}}
-      {{input type="text" id="search-field" value=searchTerm}}
+      {{input type="text" id="search-field" value=q}}
     </label>
   </form>
-  <h2>Category Filter</h2>
   <div id="category-filter">
     {{#ic-buttonset value=selectedCategory default=selectedCategory}}
       {{ic-button value="all" label="everyone"}}
@@ -23,7 +22,6 @@ learningObjectUrl: {{learningObjectUrl}}
 </section>
 
 <section id="side-bar">
-  <h2>Content Filters</h2>
   <div id="content-filters">
     {{#each category in content_filters}}
       <h3>{{category.name}}</h3>
@@ -37,7 +35,7 @@ learningObjectUrl: {{learningObjectUrl}}
 </section>
 
 <section id="content">
-  <h2>Learning Objects</h2>
+  <h2>Results</h2>
   <ul id="learning-objects">
     {{#each object in learningObjects itemController="learningObject"}}
       <li>

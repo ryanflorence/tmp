@@ -10,7 +10,7 @@ module.exports = (grunt) ->
     'build-index'
     'browserify'
   ]
-  grunt.registerTask 'default', ['build', 'watch']
+  grunt.registerTask 'default', ['build:dev', 'watch']
 
   grunt.initConfig
     watch:
@@ -43,6 +43,9 @@ module.exports = (grunt) ->
     browserify:
       options:
         shim:
+          env:
+            path: 'app/config/env'
+            exports: 'Ember'
           jquery:
             path: 'bower_components/jquery/jquery.js'
             exports: 'jQuery'
@@ -50,18 +53,19 @@ module.exports = (grunt) ->
             path: 'bower_components/handlebars/handlebars.runtime.js'
             exports: 'Handlebars'
           ember:
-            path: 'bower_components/ember/ember.js'
+            #path: 'bower_components/ember/ember.js'
+            path: 'bower_components/ember-canary-dev/index.js'
             exports: 'Ember'
             depends:
+              env: 'env'
               handlebars: 'Handlebars'
               jquery: 'jQuery'
       dev:
         options:
-          debug: yes # `yes` for source maps
+          debug: yes # source maps
         files:
           'build/application.js': ['app/.index.js']
 
     clean:
       build: ['build']
-
 

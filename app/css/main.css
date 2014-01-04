@@ -25,13 +25,13 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 150px;
+  height: 60px;
   border-bottom: 1px solid;
 }
 
 #side-bar {
   position: absolute;
-  top: 151px;
+  top: 61px;
   left: 0;
   bottom: 0;
   width: 200px;
@@ -41,7 +41,7 @@ body {
 
 #content {
   position: absolute;
-  top: 151px;
+  top: 61px;
   left: 201px;
   bottom: 0;
   right: 0px;
@@ -52,7 +52,7 @@ body {
 #learning-objects > li {
   display: inline-block;
   width: 300px;
-  height: 200px;
+  height: 100px;
   vertical-align: top;
   margin: 20px;
   padding: 10px;

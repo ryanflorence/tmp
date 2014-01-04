@@ -1,7 +1,7 @@
 module.exports = function() {
-
-  //this.route('foo');
-  //this.resource('foo');
-
+  this.resource('application', {
+    path: '/',
+    queryParams: ['category']
+  });
 };
 
