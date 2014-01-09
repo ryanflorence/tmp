@@ -1,4 +1,5 @@
 <pre id="console">
+f: {{f}}
 searchTerm: {{searchTerm}}
 selectedCategory: {{selectedCategory}}
 learningObjectUrl: {{learningObjectUrl}}
@@ -23,11 +24,11 @@ learningObjectUrl: {{learningObjectUrl}}
 
 <section id="side-bar">
   <div id="content-filters">
-    {{#each category in content_filters}}
+    {{#each category in contentFilters}}
       <h3>{{category.name}}</h3>
       <ul>
-        {{#each filter in category.filters}}
-          <li>{{filter.name}}</li>
+        {{#each filter in category.filters itemController="filter"}}
+          <li><label>{{input type="checkbox" checked=filter.checked}} {{filter.name}}</label></li>
         {{/each}}
       </ul>
     {{/each}}
@@ -36,22 +37,31 @@ learningObjectUrl: {{learningObjectUrl}}
 
 <section id="content">
   <h2>Results</h2>
-  <ul id="learning-objects">
-    {{#each object in learningObjects itemController="learningObject"}}
-      <li>
-        <h3>{{object.name}}</h3>
-        <i><b>{{object.author}}</b></i> - {{date}}
-        <div class="object-ratings">
-          {{pal-star stars=stars}} - ({{ratings}} ratings)
-        </div>
-        <p>{{object.description}}</p>
-        <ul>
-          {{#each tag in object.tags}}
-            <li>{{tag.name}}</li>
-          {{/each}}
-        </ul>
-      </li>
-    {{/each}}
-  </ul>
+  {{#ic-lazy-list
+    href=learningObjectUrl
+    data=learningObjects
+    data-key="learning_objects"
+  }}
+    <ul id="learning-objects">
+      {{#each object in learningObjects itemController="learningObject"}}
+        <li>
+          <h3>{{object.name}}</h3>
+          <i><b>{{object.author}}</b></i> - {{date}}
+          <div class="object-description">
+            {{description}}
+          </div>
+          <div class="object-ratings">
+            {{pal-star stars=stars}} - ({{ratings}} ratings)
+          </div>
+          <p>{{object.description}}</p>
+          <ul>
+            {{#each tag in object.tags}}
+              <li>{{tag.name}}</li>
+            {{/each}}
+          </ul>
+        </li>
+      {{/each}}
+    </ul>
+  {{/ic-lazy-list}}
 </section>
 

@@ -1,6 +1,9 @@
 var ajax = require('ic-ajax');
+var LazyListComponent = require('ic-lazy-list/lib/components/ic-lazy-list');
 
-var learning_objects = [
+var learningObjects = {};
+
+learningObjects.page1 = [
   {
     name: 'Basic Physics',
     id: 1,
@@ -31,13 +34,45 @@ var learning_objects = [
   }
 ];
 
+learningObjects.page2 = [
+  {
+    name: 'Introduction to Economics',
+    id: 3,
+    author: 'Ryan Florence',
+    date: '11/10/2013',
+    description: 'Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    stars: 2,
+    ratings: 20,
+    image_url: 'http://placekitten/200/200',
+    category_id: 1,
+    copyright_id: 1,
+    content_type_id: 1,
+    grade_levels: ['1', '2', '3', '4', '5', '6', '7', '8']
+  },
+  {
+    name: 'Econometrics',
+    id: 4,
+    author: 'Ronald Nate',
+    date: '10/30/2013',
+    description: 'Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    stars: 5,
+    ratings: 100,
+    image_url: 'http://placekitten/200/200',
+    category_id: 2,
+    copyright_id: 2,
+    content_type_id: 1,
+    grade_levels: ['9', '10', '11', '12', 'HE']
+  }
+];
+
+
 var categories = [
   { name: 'University of Florence', id: '1' },
   { name: 'Bracken State', id: '2' },
   { name: 'My Stuff', id: '3' }
 ];
 
-var content_filters = [
+var filters = [
   {
     name: 'Content Type',
     id: 1,
@@ -80,8 +115,37 @@ var content_filters = [
   },
 ];
 
+LazyListComponent.reopen({
+  extractMeta: function(result) {
+    return result.response.meta;
+  }
+});
+
 ajax.defineFixture('/categories', {
   response: categories,
+  jqXHR: {},
+  textStatus: 'success'
+});
+
+ajax.defineFixture('/filters', {
+  response: filters,
+  jqXHR: {},
+  textStatus: 'success'
+});
+
+ajax.defineFixture('/learning_objects/all', {
+  response: {
+    learning_objects: learningObjects.page1,
+    meta: { next: '/learning_objects/all?page=2' }
+  },
+  jqXHR: {},
+  textStatus: 'success'
+});
+
+ajax.defineFixture('/learning_objects/all?page=2', {
+  response: {
+    learning_objects: learningObjects.page2
+  },
   jqXHR: {},
   textStatus: 'success'
 });

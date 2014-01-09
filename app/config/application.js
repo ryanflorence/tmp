@@ -1,6 +1,7 @@
 require('./fixtures'); // comment out for real requests
 require('ic-styled');
 require('ic-buttonset');
+require('ic-lazy-list');
 var Ember = require('ember');
 
 // App does not need to be on window, just helpful for dev/debug
