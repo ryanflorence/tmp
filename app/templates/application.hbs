@@ -18,14 +18,15 @@ learningObjectUrl: {{learningObjectUrl}}
       {{#each category in categories}}
         {{ic-button value=category.id label=category.name}}
       {{/each}}
+      {{ic-button value="my-stuff" label="my stuff"}}
     {{/ic-buttonset}}
   </div>
 </section>
 
 <section id="side-bar">
   <div id="content-filters">
-    {{#each category in contentFilters}}
-      <h3>{{category.name}}</h3>
+    {{#each category in contentFilters itemController="object"}}
+      <h3>{{category.label}}</h3>
       <ul>
         {{#each filter in category.filters itemController="filter"}}
           <li><label>{{input type="checkbox" checked=filter.checked}} {{filter.name}}</label></li>
@@ -47,11 +48,8 @@ learningObjectUrl: {{learningObjectUrl}}
         <li>
           <h3>{{object.name}}</h3>
           <i><b>{{object.author}}</b></i> - {{date}}
-          <div class="object-description">
-            {{description}}
-          </div>
           <div class="object-ratings">
-            {{pal-star stars=stars}} - ({{ratings}} ratings)
+            {{lor-star stars=stars}} - ({{ratings}} ratings)
           </div>
           <p>{{object.description}}</p>
           <ul>

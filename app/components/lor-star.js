@@ -1,6 +1,6 @@
 var Ember = require('ember');
 
-var PalStarComponent = Ember.Component.extend({
+var LorStarComponent = Ember.Component.extend({
 
   tagName: 'span',
 
@@ -20,5 +20,5 @@ var PalStarComponent = Ember.Component.extend({
 
 });
 
-module.exports = PalStarComponent;
+module.exports = LorStarComponent;
 

@@ -1,9 +1,7 @@
 var ajax = require('ic-ajax');
 var LazyListComponent = require('ic-lazy-list/lib/components/ic-lazy-list');
 
-var learningObjects = {};
-
-learningObjects.page1 = [
+var learningObjects = [
   {
     name: 'Basic Physics',
     id: 1,
@@ -31,10 +29,7 @@ learningObjects.page1 = [
     copyright_id: 2,
     content_type_id: 1,
     grade_levels: ['9', '10', '11', '12', 'HE']
-  }
-];
-
-learningObjects.page2 = [
+  },
   {
     name: 'Introduction to Economics',
     id: 3,
@@ -65,28 +60,28 @@ learningObjects.page2 = [
   }
 ];
 
-
 var categories = [
   { name: 'University of Florence', id: '1' },
-  { name: 'Bracken State', id: '2' },
-  { name: 'My Stuff', id: '3' }
+  { name: 'Bracken State', id: '2' }
 ];
 
 var filters = [
   {
-    name: 'Content Type',
+    name: 'content_type',
+    label: 'Content Type',
     id: 1,
     filters: [
       { name: 'Courses', id: 1 },
-      { name: 'Images', id: 1 },
-      { name: 'Documents', id: 1 },
-      { name: 'Slides', id: 1 },
-      { name: 'Assignments', id: 1 },
-      { name: 'Quizzes', id: 1 },
+      { name: 'Images', id: 2 },
+      { name: 'Documents', id: 3 },
+      { name: 'Slides', id: 4 },
+      { name: 'Assignments', id: 5 },
+      { name: 'Quizzes', id: 6 },
     ]
   },
   {
-    name: 'Copyright',
+    name: 'copyright',
+    label: 'Copyright',
     id: 2,
     filters: [
       { name: 'Creative Commons', id: 1 },
@@ -96,6 +91,7 @@ var filters = [
   },
   {
     name: 'Grade Level',
+    label: 'grade_level',
     id: 3,
     filters: [
       { name: '1', id: 1 },
@@ -135,7 +131,7 @@ ajax.defineFixture('/filters', {
 
 ajax.defineFixture('/learning_objects/all', {
   response: {
-    learning_objects: learningObjects.page1,
+    learning_objects: [learningObjects[0], learningObjects[1]],
     meta: { next: '/learning_objects/all?page=2' }
   },
   jqXHR: {},
@@ -144,7 +140,15 @@ ajax.defineFixture('/learning_objects/all', {
 
 ajax.defineFixture('/learning_objects/all?page=2', {
   response: {
-    learning_objects: learningObjects.page2
+    learning_objects: [learningObjects[2], learningObjects[3]],
+  },
+  jqXHR: {},
+  textStatus: 'success'
+});
+
+ajax.defineFixture('/learning_objects/my-stuff', {
+  response: {
+    learning_objects: [learningObjects[1], learningObjects[3]]
   },
   jqXHR: {},
   textStatus: 'success'

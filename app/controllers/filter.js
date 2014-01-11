@@ -7,7 +7,14 @@ var FilterController = Ember.ObjectController.extend({
 
   toggleOnAppController: function() {
     this.get('controllers.application').toggleFilter(this);
-  }.observes('checked')
+  }.observes('checked'),
+
+  key: function() {
+    return this.get('parentController.name');
+  }.property(),
+
+  //deserializeChecked: function() {
+  //}.observes('controllers.application.
 
 });
 

@@ -13,5 +13,6 @@ var App = window.App = Ember.Application.create({
   //LOG_VIEW_LOOKUPS: true
 });
 
+
 module.exports = App;
 
